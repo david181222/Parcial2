@@ -1,0 +1,49 @@
+2025-09-07 09:24:13 [main] INFO  parcial2.App - Hello World!
+2025-09-07 09:24:13 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 09:24:13 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 09:24:13 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 09:24:13 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 09:24:13 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 09:24:13 [main] DEBUG parcial2.App - Debug message number: 4
+2025-09-07 09:25:22 [main] INFO  parcial2.App - Hello World!
+2025-09-07 09:25:22 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 09:25:22 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 09:25:22 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 09:25:22 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 09:25:22 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 09:25:22 [main] DEBUG parcial2.App - Debug message number: 4
+2025-09-07 09:27:20 [main] INFO  parcial2.App - Hello World!
+2025-09-07 09:27:20 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 09:27:20 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 09:27:20 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 09:27:20 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 09:27:20 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 09:27:20 [main] DEBUG parcial2.App - Debug message number: 4
+2025-09-07 09:38:53 [main] INFO  parcial2.App - Hello World!
+2025-09-07 09:38:53 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 09:38:53 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 09:38:53 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 09:38:53 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 09:38:53 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 09:38:53 [main] DEBUG parcial2.App - Debug message number: 4
+2025-09-07 09:44:34 [main] INFO  parcial2.App - Hello World!
+2025-09-07 09:44:34 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 09:44:34 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 09:44:34 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 09:44:34 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 09:44:34 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 09:44:34 [main] DEBUG parcial2.App - Debug message number: 4
+2025-09-07 09:45:04 [main] INFO  parcial2.App - Hello World!
+2025-09-07 09:45:04 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 09:45:04 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 09:45:04 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 09:45:04 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 09:45:04 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 09:45:04 [main] DEBUG parcial2.App - Debug message number: 4
+2025-09-07 09:46:05 [main] INFO  parcial2.App - Hello World!
+2025-09-07 09:46:05 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 4
