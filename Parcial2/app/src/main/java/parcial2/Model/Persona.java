@@ -1,5 +1,6 @@
 package parcial2.Model;
 
+//clase para probar la medicion de peso de objetos
 public class Persona {
     private String nombre;
     private int edad;
