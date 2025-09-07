@@ -176,3 +176,22 @@
  - Tiempo de CPU Usado por el Proceso: 14405 ms 
 
 
+2025-09-07 13:56:05 [main] INFO  performance - 
+ === PROCESO [ App Main Process ] === 
+ - Uso Memoria Inicio : 22 MB
+ - Consumo CPU Inicio : 12,42 %
+ - Uso Memoria Final : 76 MB
+ - Consumo CPU Final : 17,10 %
+ - Incremento Memoria : 54 MB
+ - Incremento CPU : 4,67 %
+ - Tiempo Ejecucion : 4304 ms
+ - Memoria Disponible JVM : 136 MB
+ - Incremento CPU del Proceso: 252,48 %
+ =============================== 
+
+ - Memoria Física Total: 15182 MB
+ - Memoria Física Usada: 11727 MB
+ - Número de Hilos Activos: 44
+ - Tiempo de CPU Usado por el Proceso: 12655 ms 
+
+
