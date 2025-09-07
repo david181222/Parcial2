@@ -3,3 +3,11 @@
 
 # Ignore Gradle build output directory
 build
+
+# Ignorar archivos compilados y carpetas temporales
+app/bin/
+*.class
+
+# Ignorar archivos de logs
+logs/*.log
+app/logs/*.log

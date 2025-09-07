@@ -47,3 +47,10 @@
 2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 2
 2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 3
 2025-09-07 09:46:05 [main] DEBUG parcial2.App - Debug message number: 4
+2025-09-07 13:48:42 [main] INFO  parcial2.App - Hello World!
+2025-09-07 13:48:42 [main] INFO  parcial2.App - This is a log message.
+2025-09-07 13:48:42 [main] DEBUG parcial2.App - Debug message number: 0
+2025-09-07 13:48:42 [main] DEBUG parcial2.App - Debug message number: 1
+2025-09-07 13:48:42 [main] DEBUG parcial2.App - Debug message number: 2
+2025-09-07 13:48:42 [main] DEBUG parcial2.App - Debug message number: 3
+2025-09-07 13:48:42 [main] DEBUG parcial2.App - Debug message number: 4
