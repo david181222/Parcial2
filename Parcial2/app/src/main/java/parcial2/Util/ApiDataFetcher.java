@@ -5,10 +5,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -27,9 +25,11 @@ public class ApiDataFetcher {
         JsonObject jsonResponse = gson.fromJson(response.body(), JsonObject.class);
         List<JsonObject> resultado = new ArrayList<>();
         if (jsonResponse.has("data") && jsonResponse.get("data").isJsonArray()) {
+            JsonObject original;
+            JsonObject filtrado;
             for (JsonElement elem : jsonResponse.getAsJsonArray("data")) {
-                JsonObject original = elem.getAsJsonObject();
-                JsonObject filtrado = new JsonObject();
+                original = elem.getAsJsonObject();
+                filtrado = new JsonObject();
                 for (String campo : camposSeleccionados) {
                     if (original.has(campo)) {
                         filtrado.add(campo, original.get(campo));
