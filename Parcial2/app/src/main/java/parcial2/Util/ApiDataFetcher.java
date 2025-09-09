@@ -13,7 +13,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class ApiDataFetcher {
-    public static List<JsonObject> fetchAndSelect(String apiUrl, Set<String> camposSeleccionados) throws Exception {
+    public static List<String> fetchAndSelect(String apiUrl, Set<String> camposSeleccionados) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(apiUrl))
@@ -22,29 +22,33 @@ public class ApiDataFetcher {
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         Gson gson = new Gson();
-        JsonObject jsonResponse = gson.fromJson(response.body(), JsonObject.class);
-        List<JsonObject> resultado = new ArrayList<>();
-        if (jsonResponse.has("data") && jsonResponse.get("data").isJsonArray()) {
-            JsonObject original;
-            JsonObject filtrado;
-            for (JsonElement elem : jsonResponse.getAsJsonArray("data")) {
-                original = elem.getAsJsonObject();
-                filtrado = new JsonObject();
-                for (String campo : camposSeleccionados) {
-                    if (original.has(campo)) {
-                        filtrado.add(campo, original.get(campo));
+        List<String> resultado = new ArrayList<>();
+        // La API de ZenQuotes devuelve un array en la raíz
+        JsonElement jsonElement = gson.fromJson(response.body(), JsonElement.class);
+        if (jsonElement.isJsonArray()) {
+            for (JsonElement elem : jsonElement.getAsJsonArray()) {
+                if (elem.isJsonObject()) {
+                    JsonObject original = elem.getAsJsonObject();
+                    List<String> filtrado = new ArrayList<>();
+                    for (String campo : camposSeleccionados) {
+                        if (original.has(campo)) {
+                            resultado.add(original.get(campo).toString());
+                        }
                     }
                 }
-                resultado.add(filtrado);
             }
         }
         return resultado;
     }
 
-    // Método utilitario para obtener datos de la API de criptomonedas con campos predefinidos
-    public static List<JsonObject> fetchDefaultData() throws Exception {
-        String apiUrl = "https://api.coinlore.net/api/tickers/";
-        Set<String> campos = Set.of("id", "name", "price_usd");
+    // Método utilitario para obtener datos de la API ZenQuotes con campos relevantes
+    public static List<String> fetchDefaultData() {
+        try {
+            String apiUrl = "https://zenquotes.io/api/quotes";
+        Set<String> campos = Set.of("q");
         return fetchAndSelect(apiUrl, campos);
+        } catch (Exception e) {
+           return null;
+        }
     }
 }

@@ -6,11 +6,15 @@ package parcial2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import parcial2.Model.Persona;
+import parcial2.Service.Frase;
 import parcial2.Util.PerformanceMonitor;
 import parcial2.Util.SpatialEfficiency;
 import parcial2.Util.ApiDataFetcher;
+
+import com.google.common.base.Ascii;
 import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class App {
@@ -20,21 +24,10 @@ public class App {
     public static void main(String[] args) throws Exception {
         PerformanceMonitor monitor = new PerformanceMonitor("App Main Process");
         monitor.inicio();
-        Persona persona = new Persona("Juan Perez", 30);
-        logger.info("Hello World!");
-        logger.info("This is a log message.");
 
-        for (int i = 0; i < 5; i++) {
-            logger.debug("Debug message number: " + i);
-        }
-        monitor.finalizado();
-        System.out.println(SpatialEfficiency.medirPesoObjeto(persona));
+        Frase transsactor = new Frase();
 
-        // Prueba de ApiDataFetcher
-        List<JsonObject> datos = ApiDataFetcher.fetchDefaultData();
-        for (JsonObject obj : datos) {
-            System.out.println(obj);
-        }
+        transsactor.showSwaw();
     }
 }
 
