@@ -1,0 +1,57 @@
+2025-09-08 12:08:33 [main] INFO  performance - 
+ === PROCESO [ App Main Process ] === 
+ - Uso Memoria Inicio : 20 MB
+ - Consumo CPU Inicio : 17.13 %
+ - Uso Memoria Final : 29 MB
+ - Consumo CPU Final : 17.33 %
+ - Incremento Memoria : 9 MB
+ - Incremento CPU : 0.20 %
+ - Tiempo Ejecucion : 2687 ms
+ - Memoria Disponible JVM : 206 MB
+ - Incremento CPU del Proceso: 363.79 %
+ =============================== 
+
+ - Memoria Física Total: 15182 MB
+ - Memoria Física Usada: 12117 MB
+ - Número de Hilos Activos: 40
+ - Tiempo de CPU Usado por el Proceso: 7218 ms 
+
+
+2025-09-08 17:09:23 [main] INFO  performance - 
+ === PROCESO [ App Main Process ] === 
+ - Uso Memoria Inicio : 20 MB
+ - Consumo CPU Inicio : 24.51 %
+ - Uso Memoria Final : 29 MB
+ - Consumo CPU Final : 25.25 %
+ - Incremento Memoria : 9 MB
+ - Incremento CPU : 0.74 %
+ - Tiempo Ejecucion : 1474 ms
+ - Memoria Disponible JVM : 206 MB
+ - Incremento CPU del Proceso: 352.17 %
+ =============================== 
+
+ - Memoria Física Total: 15182 MB
+ - Memoria Física Usada: 13044 MB
+ - Número de Hilos Activos: 41
+ - Tiempo de CPU Usado por el Proceso: 3608 ms 
+
+
+2025-09-08 17:20:57 [main] INFO  performance - 
+ === PROCESO [ App Main Process ] === 
+ - Uso Memoria Inicio : 20 MB
+ - Consumo CPU Inicio : 52.77 %
+ - Uso Memoria Final : 30 MB
+ - Consumo CPU Final : 52.77 %
+ - Incremento Memoria : 9 MB
+ - Incremento CPU : 0.00 %
+ - Tiempo Ejecucion : 653 ms
+ - Memoria Disponible JVM : 206 MB
+ - Incremento CPU del Proceso: 202.98 %
+ =============================== 
+
+ - Memoria Física Total: 15182 MB
+ - Memoria Física Usada: 13434 MB
+ - Número de Hilos Activos: 41
+ - Tiempo de CPU Usado por el Proceso: 3546 ms 
+
+
