@@ -24,6 +24,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         PerformanceMonitor monitor = new PerformanceMonitor("App Main Process");
         monitor.inicio();
+        logger.info("Hello World!");
 
         Frase transsactor = new Frase();
 
