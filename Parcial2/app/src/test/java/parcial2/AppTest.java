@@ -6,6 +6,64 @@ package parcial2;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import parcial2.Service.Frase;
+import parcial2.Service.DesencriptarService;
+import parcial2.Service.ProcesadorFrasesService;
+import parcial2.Model.LinkedListImpl;
+
+import java.util.List;
+import java.util.ArrayDeque;
+
 class AppTest {
-  
+
+    @Test
+    void testFraseEncriptQuote() {
+        List<String> quotes = List.of("Hello World", "Java Testing");
+        Frase frase = new Frase(quotes);
+
+        List<String[]> processedQuotes = ProcesadorFrasesService.getProcessedWords(quotes);
+        frase.encriptQuote(processedQuotes);
+
+        ArrayDeque<LinkedListImpl<Integer>> encriptedQuotes = frase.getEncriptedSwappedQuotes();
+        assertNotNull(encriptedQuotes);
+        assertFalse(encriptedQuotes.isEmpty());
+        assertEquals(4, encriptedQuotes.size()); // 4 words in total
+    }
+
+    @Test
+    void testDesencriptarService() {
+        List<String> quotes = List.of("Hello World");
+        Frase frase = new Frase(quotes);
+
+        List<String[]> processedQuotes = ProcesadorFrasesService.getProcessedWords(quotes);
+        frase.encriptQuote(processedQuotes);
+
+        DesencriptarService desencriptarService = new DesencriptarService();
+        String desencriptedMessage = desencriptarService.desEncript(frase.getEncriptedSwappedQuotes());
+
+        assertEquals("Hello World", desencriptedMessage);
+    }
+
+    @Test
+    void testProcesadorFrasesService() {
+        List<String> quotes = List.of("Hello World", "Java Testing");
+        List<String[]> processedQuotes = ProcesadorFrasesService.getProcessedWords(quotes);
+
+        assertNotNull(processedQuotes);
+        assertEquals(2, processedQuotes.size());
+        assertArrayEquals(new String[]{"Hello", "World"}, processedQuotes.get(0));
+        assertArrayEquals(new String[]{"Java", "Testing"}, processedQuotes.get(1));
+    }
+
+    @Test
+    void testFraseConstructorWithNullQuotes() {
+        Frase frase = new Frase(null);
+        assertNull(frase.getQuotes());
+    }
+
+    @Test
+    void testFraseConstructorWithEmptyQuotes() {
+        Frase frase = new Frase(List.of());
+        assertNull(frase.getQuotes());
+    }
 }

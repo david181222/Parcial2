@@ -9,12 +9,15 @@ import oshi.hardware.GlobalMemory;
 import oshi.software.os.OperatingSystem;
 import oshi.software.os.OSProcess;
 
+//Se hizo un cambio en esta clase, ya no se usa un String para el log, donde se concatena, sino un StringBuilder
+// para mejorar la eficiencia en la construcción del mensaje, ya que es muy largo. Pudimos evidenciar esa mejora en
+// los logs de performance, notamos que el código se ejecuta algo más rápido
 public class PerformanceMonitor {
 
     private static final Logger logger = LogManager.getLogger("performance");
 
     private String NombreProceso; // Nombre descriptivo del proceso monitoreado
-    private String MensajeLog; // Mensaje acumulativo para el log
+    private StringBuilder MensajeLog; // Changed to StringBuilder for efficiency
 
     private long TiempoInicio; // Tiempo de inicio del monitoreo (ms)
     private long TiempoFinalizado; // Tiempo de finalización del monitoreo (ms)
@@ -38,7 +41,7 @@ public class PerformanceMonitor {
     // Constructor que inicializa los objetos OSHI y el nombre del proceso.
     public PerformanceMonitor(String nombreProceso) {
         NombreProceso = nombreProceso;
-        MensajeLog = "";
+        MensajeLog = new StringBuilder(); // Initialize StringBuilder
         InformacionSistema = new SystemInfo();
         Procesador = InformacionSistema.getHardware().getProcessor();
         MemoriaFisica = InformacionSistema.getHardware().getMemory();
@@ -61,9 +64,9 @@ public class PerformanceMonitor {
         // Guardar el estado del proceso al inicio
         procesoInicio = Os.getProcess(Os.getProcessId());
         // Mensaje inicial para el log
-        MensajeLog += "\n === PROCESO [ " + NombreProceso + " ] === ";
-        MensajeLog += "\n - Uso Memoria Inicio : " + Math.round(bytesToMegabytes(UsoMemoriaInicial)) + " MB";
-        MensajeLog += "\n - Consumo CPU Inicio : " + String.format("%.2f", ConsumoCpuInicio) + " %";
+        MensajeLog.append("\n === PROCESO [ ").append(NombreProceso).append(" ] === ");
+        MensajeLog.append("\n - Uso Memoria Inicio : ").append(Math.round(bytesToMegabytes(UsoMemoriaInicial))).append(" MB");
+        MensajeLog.append("\n - Consumo CPU Inicio : ").append(String.format("%.2f", ConsumoCpuInicio)).append(" %");
     }
 
     /**
@@ -112,24 +115,24 @@ public class PerformanceMonitor {
         diferenciaMemoria = UsoMemoriaFinal - UsoMemoriaInicial;
         diferenciaCpu = ConsumoCpuFinal - ConsumoCpuInicio;
         // Agregar métricas al log
-        MensajeLog += "\n - Uso Memoria Final : " + Math.round(bytesToMegabytes(UsoMemoriaFinal)) + " MB";
-        MensajeLog += "\n - Consumo CPU Final : " + String.format("%.2f", ConsumoCpuFinal) + " %";
-        MensajeLog += "\n - Incremento Memoria : " + Math.round(bytesToMegabytes(diferenciaMemoria)) + " MB";
-        MensajeLog += "\n - Incremento CPU : " + String.format("%.2f", diferenciaCpu) + " %";
-        MensajeLog += "\n - Tiempo Ejecucion : " + diferenciaTiempo + " ms";
-        MensajeLog += "\n - Memoria Disponible JVM : " + Math.round(bytesToMegabytes(runtime.freeMemory())) + " MB";
-        MensajeLog += "\n - Incremento CPU del Proceso: " + String.format("%.2f", porcentajeCpuProceso) + " %";
-        MensajeLog += "\n =============================== \n";
+        MensajeLog.append("\n - Uso Memoria Final : ").append(Math.round(bytesToMegabytes(UsoMemoriaFinal))).append(" MB");
+        MensajeLog.append("\n - Consumo CPU Final : ").append(String.format("%.2f", ConsumoCpuFinal)).append(" %");
+        MensajeLog.append("\n - Incremento Memoria : ").append(Math.round(bytesToMegabytes(diferenciaMemoria))).append(" MB");
+        MensajeLog.append("\n - Incremento CPU : ").append(String.format("%.2f", diferenciaCpu)).append(" %");
+        MensajeLog.append("\n - Tiempo Ejecucion : ").append(diferenciaTiempo).append(" ms");
+        MensajeLog.append("\n - Memoria Disponible JVM : ").append(Math.round(bytesToMegabytes(runtime.freeMemory()))).append(" MB");
+        MensajeLog.append("\n - Incremento CPU del Proceso: ").append(String.format("%.2f", porcentajeCpuProceso)).append(" %");
+        MensajeLog.append("\n =============================== \n");
         // Métricas adicionales del sistema
         memoriaFisicaUsada = MemoriaFisica.getTotal() - MemoriaFisica.getAvailable();
         tiempoCpuProceso = procesoFinal.getKernelTime() + procesoFinal.getUserTime();
         numeroHilos = procesoFinal.getThreadCount();
-        MensajeLog += "\n - Memoria Física Total: " + Math.round(bytesToMegabytes(MemoriaFisica.getTotal())) + " MB";
-        MensajeLog += "\n - Memoria Física Usada: " + Math.round(bytesToMegabytes(memoriaFisicaUsada)) + " MB";
-        MensajeLog += "\n - Número de Hilos Activos: " + numeroHilos;
-        MensajeLog += "\n - Tiempo de CPU Usado por el Proceso: " + tiempoCpuProceso + " ms \n\n";
+        MensajeLog.append("\n - Memoria Física Total: ").append(Math.round(bytesToMegabytes(MemoriaFisica.getTotal()))).append(" MB");
+        MensajeLog.append("\n - Memoria Física Usada: ").append(Math.round(bytesToMegabytes(memoriaFisicaUsada))).append(" MB");
+        MensajeLog.append("\n - Número de Hilos Activos: ").append(numeroHilos);
+        MensajeLog.append("\n - Tiempo de CPU Usado por el Proceso: ").append(tiempoCpuProceso).append(" ms \n\n");
         // Registrar el log final
-        logger.info(MensajeLog);
+        logger.info(MensajeLog.toString());
     }
 
     private double bytesToMegabytes(long bytes) {

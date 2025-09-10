@@ -2,6 +2,7 @@ package parcial2.Model;
 
 import parcial2.Iface.ILinkedList;
 
+// Implementación de una lista enlazada simple usando parametrización que implementa la interfaz ILinkedList
 public class LinkedListImpl<T> implements ILinkedList<T> {
     public Nodo<T> cabeza;
     public int counter;
@@ -66,6 +67,6 @@ public class LinkedListImpl<T> implements ILinkedList<T> {
             actual = actual.getSiguiente();
         }
         System.out.println("null");
-    }
+    } 
 
 }

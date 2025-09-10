@@ -3,33 +3,55 @@
  */
 package parcial2;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import parcial2.Service.Frase;
 import parcial2.Service.DesencriptarService;
 import parcial2.Service.ProcesadorFrasesService;
-import parcial2.Util.PerformanceMonitor;
+import parcial2.Util.ApiDataFetcher;
 
-
+// En esta clase se orquesta el proceso simulando su funcionamiento, su objetivo es usarse para visualizar el flujo y validar
 public class App {
 
     public static final Logger logger = LogManager.getLogger(App.class);
 
-    public static void main(String[] args) throws Exception {
-        PerformanceMonitor monitor = new PerformanceMonitor("App Main Process");
-        monitor.inicio();
-        logger.info("Inicio de la aplicación");
-        Frase fraseService = new Frase();
-        fraseService.encriptQuote(ProcesadorFrasesService.getProcessedWords(fraseService.getQuotes()));
-        fraseService.showSwappedQuotes();
-        DesencriptarService desencriptarService = new DesencriptarService();
-        String mensajeRecuperado = desencriptarService.desEncript(fraseService.getEncriptedSwappedQuotes());
-        System.out.println("Frases desencriptadas:");
-        System.out.println(mensajeRecuperado);
+    public static void main(String[] args) {
+ 
+        try {
+            logger.info("Inicio de la aplicación");
+            List<String> quotes = ApiDataFetcher.fetchDefaultData();
+            Frase fraseService = new Frase(quotes);
+            if (fraseService.getQuotes() == null || fraseService.getQuotes().isEmpty()) {
+                logger.warn("No se obtuvieron frases desde la API. Proceso detenido.");
+                return;
+            }
+
+            logger.info("Procesando y encriptando frases");
+            fraseService.encriptQuote(ProcesadorFrasesService.getProcessedWords(fraseService.getQuotes()));
+            fraseService.showSwappedQuotes();
+
+            DesencriptarService desencriptarService = new DesencriptarService();
+            logger.info("Iniciando proceso de desencriptación");
+            String mensajeRecuperado = desencriptarService.desEncript(fraseService.getEncriptedSwappedQuotes());
+            logger.info("Desencriptación finalizada");
+            System.out.println("Frases desencriptadas:");
+            System.out.println(mensajeRecuperado);
+
+            // System.out.println(SpatialEfficiency.medirPesoObjeto(fraseService));
+            // System.out.println(SpatialEfficiency.medirPesoObjeto(desencriptarService));
+        } catch (Exception e) {
+            logger.warn("Error inesperado en la aplicación: {}", e.getMessage());
+        } finally {
+            try {
+
+            } catch (Exception ex) {
+                logger.warn("Error al finalizar el monitor de performance: {}", ex.getMessage());
+                throw ex;
+            }
+            logger.info("Aplicación finalizada");
+        }
     }
-
-   
-    }
-
-
+}
