@@ -8,6 +8,7 @@ public class ProcesadorFrasesService {
     public static List<String[]> getProcessedWords(List<String> quotes) {
         List<String[]> processedWords = new ArrayList<>();
         for (String quote : quotes) {
+            quote = quote.replace("\"", ""); // Eliminamos comillas si las hay
             processedWords.add(quote.split(" "));
         }
         return processedWords;

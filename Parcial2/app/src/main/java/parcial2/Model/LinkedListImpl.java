@@ -1,4 +1,3 @@
-
 package parcial2.Model;
 
 import parcial2.Iface.ILinkedList;
@@ -20,15 +19,16 @@ public class LinkedListImpl<T> implements ILinkedList<T> {
         }
         counter++;
     }
+
     @Override
     public void intercambiarNodos() {
         // Validación para ver si la lista esta vacía o tiene un solo nodo
         if (cabeza == null || cabeza.getSiguiente() == null)
             return;
 
-    Nodo<T> anterior = null; // Apunta al nodo anterior al par que se está intercambiando
-    Nodo<T> actual = cabeza; // Apunta al primer nodo del par actual
-    Nodo<T> siguiente = null; // Declaración fuera del ciclo
+        Nodo<T> anterior = null; // Apunta al nodo anterior al par que se está intercambiando
+        Nodo<T> actual = cabeza; // Apunta al primer nodo del par actual
+        Nodo<T> siguiente = null; // Declaración fuera del ciclo
 
         // El segundo nodo será la nueva cabeza, porque tras el primer intercambio, el
         // segundo nodo avanza a la primera posición
@@ -44,7 +44,8 @@ public class LinkedListImpl<T> implements ILinkedList<T> {
             // El segundo nodo apunta al primero, para que se de el intercambio
             siguiente.setSiguiente(actual);
 
-            // Validame que anterior no sea null (es decir, que no estemos en el primer par)
+            // Validamos que anterior no sea null (es decir, que no estemos en el primer
+            // par)
             // Si no es null, el nodo anterior al par actual debe apuntar al segundo nodo
             if (anterior != null) {
                 anterior.setSiguiente(siguiente);
@@ -56,6 +57,7 @@ public class LinkedListImpl<T> implements ILinkedList<T> {
             actual = actual.getSiguiente();
         }
     }
+
     @Override
     public void mostrar() {
         Nodo<T> actual = cabeza;

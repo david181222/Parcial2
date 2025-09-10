@@ -11,3 +11,4 @@ app/bin/
 # Ignorar archivos de logs
 logs/*.log
 app/logs/*.log
+.vscode/

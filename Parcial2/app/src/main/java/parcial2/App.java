@@ -7,33 +7,29 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import parcial2.Service.Frase;
+import parcial2.Service.DesencriptarService;
+import parcial2.Service.ProcesadorFrasesService;
 import parcial2.Util.PerformanceMonitor;
-import parcial2.Util.SpatialEfficiency;
-import parcial2.Util.ApiDataFetcher;
 
-import com.google.common.base.Ascii;
-import com.google.gson.JsonObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class App {
 
     public static final Logger logger = LogManager.getLogger(App.class);
 
     public static void main(String[] args) throws Exception {
-    PerformanceMonitor monitor = new PerformanceMonitor("App Main Process");
-    monitor.inicio();
-    logger.info("Hello World!");
-
-    System.out.println("INICIO DE PRUEBA");
-    Frase transsactor = new Frase();
-    // Procesar frases originales a lista de palabras
-    List<String[]> processedQuotes = parcial2.Service.ProcesadorFrasesService.getProcessedWords(transsactor.getQuotes());
-    transsactor.encriptQuote(processedQuotes);
-    transsactor.encriptSwappedQuotes();
-    transsactor.showSwappedQuotes();
-    System.out.println("FIN DE PRUEBA");
+        PerformanceMonitor monitor = new PerformanceMonitor("App Main Process");
+        monitor.inicio();
+        logger.info("Inicio de la aplicación");
+        Frase fraseService = new Frase();
+        fraseService.encriptQuote(ProcesadorFrasesService.getProcessedWords(fraseService.getQuotes()));
+        fraseService.showSwappedQuotes();
+        DesencriptarService desencriptarService = new DesencriptarService();
+        String mensajeRecuperado = desencriptarService.desEncript(fraseService.getEncriptedSwappedQuotes());
+        System.out.println("Frases desencriptadas:");
+        System.out.println(mensajeRecuperado);
     }
-}
+
+   
+    }
+
 

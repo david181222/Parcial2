@@ -1,0 +1,8 @@
+# Raiz del repo
+# Ignorar configuración de VS Code
+.vscode/
+
+# Ignorar directorio de logs en la raiz
+logs/*.log
+
+# Delegar al .gitignore interno de Parcial2 para lo demás
