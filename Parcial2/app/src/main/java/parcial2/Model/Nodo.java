@@ -1,13 +1,29 @@
 package parcial2.Model;
 
-// Clase Nodo
-public class Nodo {
-    public int dato;
-    public Nodo siguiente; //Puntero
+// Clase Nodo genérica
+public class Nodo<T> {
+    private T dato;
+    private Nodo<T> siguiente; //Puntero
 
-    public Nodo(int dato) {
+    public Nodo(T dato) {
         this.dato = dato;
         this.siguiente = null;
+    }
+
+    public T getDato() {
+        return dato;
+    }
+
+    public void setDato(T dato) {
+        this.dato = dato;
+    }
+
+    public Nodo<T> getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Nodo<T> siguiente) {
+        this.siguiente = siguiente;
     }
 
     @Override
@@ -17,5 +33,4 @@ public class Nodo {
                 ", siguiente=" + (siguiente != null ? "Nodo{" + "dato=" + siguiente.dato + '}' : "null") +
                 '}';
     }
-    
 }

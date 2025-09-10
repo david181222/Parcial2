@@ -22,13 +22,18 @@ public class App {
     public static final Logger logger = LogManager.getLogger(App.class);
 
     public static void main(String[] args) throws Exception {
-        PerformanceMonitor monitor = new PerformanceMonitor("App Main Process");
-        monitor.inicio();
-        logger.info("Hello World!");
+    PerformanceMonitor monitor = new PerformanceMonitor("App Main Process");
+    monitor.inicio();
+    logger.info("Hello World!");
 
-        Frase transsactor = new Frase();
-
-        transsactor.showSwaw();
+    System.out.println("INICIO DE PRUEBA");
+    Frase transsactor = new Frase();
+    // Procesar frases originales a lista de palabras
+    List<String[]> processedQuotes = parcial2.Service.ProcesadorFrasesService.getProcessedWords(transsactor.getQuotes());
+    transsactor.encriptQuote(processedQuotes);
+    transsactor.encriptSwappedQuotes();
+    transsactor.showSwappedQuotes();
+    System.out.println("FIN DE PRUEBA");
     }
 }
 

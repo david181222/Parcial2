@@ -2,7 +2,7 @@
 <Configuration status="info" strict="true" name="Log4j2Config">
     <Properties>
         <Property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Property>
-        <Property name="app_log_root">logs</Property>
+    <Property name="app_log_root">logs</Property>
         <Property name="analisis_log">analisis_${hostName}</Property>
         <Property name="analisis_time">analisis_${hostName}</Property>
         <Property name="analisis_performance">analisis_${hostName}</Property>
