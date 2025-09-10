@@ -5,15 +5,15 @@ import parcial2.Iface.ILinkedList;
 // Implementación de una lista enlazada simple usando parametrización que implementa la interfaz ILinkedList
 public class LinkedListImpl<T> implements ILinkedList<T> {
     public Nodo<T> cabeza;
-    public int counter;
+    public int counter; // Contador de nodos en la lista
 
     @Override
     public void agregarFinal(Nodo<T> nodo) {
         if (cabeza == null) {
-            cabeza = nodo;
+            cabeza = nodo;   // Si la lista esta vacía, el nuevo nodo es la cabeza
         } else {
             Nodo<T> puntero = cabeza;
-            while (puntero.getSiguiente() != null) {
+            while (puntero.getSiguiente() != null) {    // Recorremos la lista hasta el final
                 puntero = puntero.getSiguiente();
             }
             puntero.setSiguiente(nodo);
@@ -36,7 +36,7 @@ public class LinkedListImpl<T> implements ILinkedList<T> {
         cabeza = cabeza.getSiguiente();
 
         // Recorremos la lista mientras haya al menos un par de nodos para intercambiar
-        while (actual != null && actual.getSiguiente() != null) {
+        while (actual != null && actual.getSiguiente() != null) { 
             siguiente = actual.getSiguiente(); // Apunta al segundo nodo del par
 
             // El primer nodo apunta al nodo después del par que tengo

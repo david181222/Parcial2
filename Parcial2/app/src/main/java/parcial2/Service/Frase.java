@@ -17,8 +17,8 @@ public class Frase {
     private static final Logger logger = LogManager.getLogger(Frase.class);
     private static PerformanceMonitor performanceMonitorFrase = new PerformanceMonitor("Monitoreo clase Frase");
     
-    private List<String> quotes; // Ahora estado por instancia
-    private final ArrayDeque<LinkedListImpl<Integer>> encriptedSwappedQuotes = new ArrayDeque<>(); 
+    private List<String> quotes; //Define la lista de frases obtenidas desde la API
+    private final ArrayDeque<LinkedListImpl<Integer>> encriptedSwappedQuotes = new ArrayDeque<>(); // Define el ArrayDeque que contendrá las listas enlazadas 
 
     // Constructor que recibe las frases obtenidas desde la API (se le pasan desde App.java)
     public Frase(List<String> quotes) {
@@ -54,7 +54,7 @@ public class Frase {
             logger.warn("Lista de frases procesadas vacía. Nada que encriptar");
             return;
         }
-        int palabrasProcesadas = 0;
+        int processedWords = 0;
         try {
             LinkedListImpl<Integer> auxLinkedList;
             for (String[] words : processedQuotes) {
@@ -71,15 +71,16 @@ public class Frase {
                     auxLinkedList = encriptWord(word);          // Encriptamos la palabra en una lista enlazada usando el método encriptWord
                     auxLinkedList.intercambiarNodos();          // Intercambiamos nodos en la lista enlazada
                     encriptedSwappedQuotes.add(auxLinkedList);  // Agregamos la lista enlazada con la palabra encriptada e intercambiada al ArrayDeque
-                    palabrasProcesadas++;                       // Contador para manejo de logs
+                    processedWords++;                           // Contador para manejo de logs
                 }
             }
-            logger.info("Proceso de encriptación completado. Total palabras encriptadas: {}", palabrasProcesadas);
+            logger.info("Proceso de encriptación completado. Total palabras encriptadas: {}", processedWords);
         } catch (Exception e) {
             logger.warn("Error durante la encriptación de frases: {}", e.getMessage());
             throw e; 
         } finally {
-            performanceMonitorFrase.finalizado(); 
+            performanceMonitorFrase.finalizado(); // Se acaba el monitoreo de performance, como en este método usa el 
+                                                    // método encriptWord, allí se incluye en la medición
         }
     }
 
@@ -126,7 +127,7 @@ public class Frase {
                 logger.warn("Se encontró una lista vacía o nula dentro del Deque");
                 continue;
             }
-            q.mostrar();
+            q.mostrar();    // Usa el método de la lista enlazada para visualizar
         }
     }
 

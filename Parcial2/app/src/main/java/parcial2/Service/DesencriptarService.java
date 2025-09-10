@@ -41,18 +41,19 @@ public class DesencriptarService {
                 }
                 wordOnList.intercambiarNodos();         // Revertimos el switcheo de nodos en la lista enlazada, para que quede como la original
                 if (wordIndex > 0) {
-                    message.append(' ');
+                    message.append(' ');           // Agregamos un espacio entre palabras para formar la frase
                 }
                 String recovered = recoveryWord(wordOnList);      // Reconstruimos la palabra original pasando la lista enlazada al método recoveryWord
                 logger.info("Palabra desencriptada agregada al mensaje");
                 message.append(recovered);                       // Concatenamos la palabra recuperada al mensaje final
-                wordIndex++;
+                wordIndex++;    
             }
             logger.info("Desencriptación completada. Total palabras: {}", wordIndex);
         } catch (Exception e) {
             logger.warn("Error durante la desencriptación: {}", e.getMessage());
         } finally {
-            performanceMonitorDesencriptarService.finalizado();
+            performanceMonitorDesencriptarService.finalizado();    //  Se acaba el monitoreo de performance, como en este método usa el 
+                                                                  // método encriptWord, allí se incluye en la medición
         }
         return message.toString();
     }
@@ -66,7 +67,7 @@ public class DesencriptarService {
             logger.warn("recoverWord recibió una lista null");
             return "";
         }
-        Nodo<Integer> actual = wordOnList.cabeza;
+        Nodo<Integer> actual = wordOnList.cabeza; // Puntero actual que permite recorrer la lista
         if (actual == null) {
             logger.warn("recoverWord recibió una lista sin nodos (cabeza null)");
             return "";
